@@ -1,3 +1,11 @@
+:root {
+  --main-color: #fff;
+  --second-color: #000;
+  --purple-color: #7428cb;
+  --pink-color: #fc60a8;
+  --blue-color: #5386e4;
+}
+
 html,
 body {
   padding: 0;
