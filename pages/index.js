@@ -2,10 +2,11 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Intro from "../components/Intro/Intro";
 import NavBar from "../components/NavBar/NavBar";
+import Home from "../components/Home/Home";
 
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export default function Index() {
   const tabHome = "home";
   const tabAboutMe = "aboutMe";
   const tabProjects = "projects";
@@ -40,7 +41,7 @@ export default function Home() {
             }}
           />
           {tab === tabHome ? (
-            <h1>Home</h1>
+            <Home />
           ) : tab === tabAboutMe ? (
             <h1>About Me</h1>
           ) : (

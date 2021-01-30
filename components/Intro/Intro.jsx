@@ -8,6 +8,9 @@ const Intro = () => {
       <span>Welcome to My Page</span>
       <style jsx>{`
         div {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100vw;
           height: 100vh;
           display: flex;

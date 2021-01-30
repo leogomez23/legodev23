@@ -37,6 +37,7 @@ const NavBar = ({ tab, setTab, tabs }) => {
         ul {
           position: fixed;
           top: 0;
+          left: 0;
           display: flex;
           justify-content: center;
           width: 100vw;
