@@ -116,6 +116,21 @@ const NavBar = () => {
             top: auto;
             bottom: 0;
           }
+          li::after {
+            bottom: auto;
+            top: 0;
+          }
+          li:hover::after {
+            animation-iteration-count: 2;
+          }
+          @keyframes bar-in {
+            from {
+              bottom: -50px;
+            }
+            to {
+              bottom: 0;
+            }
+          }
         }
       `}</style>
     </nav>
