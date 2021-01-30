@@ -6,6 +6,11 @@ import NavBar from "../components/NavBar/NavBar";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const tabHome = "home";
+  const tabAboutMe = "aboutMe";
+  const tabProjects = "projects";
+
+  const [tab, setTab] = useState(tabHome);
   const [closeIntro, setCloseIntro] = useState(false);
 
   useEffect(() => {
@@ -25,7 +30,22 @@ export default function Home() {
         <Intro />
       ) : (
         <>
-          <NavBar />
+          <NavBar
+            tab={tab}
+            setTab={setTab}
+            tabs={{
+              home: tabHome,
+              about: tabAboutMe,
+              projects: tabProjects,
+            }}
+          />
+          {tab === tabHome ? (
+            <h1>Home</h1>
+          ) : tab === tabAboutMe ? (
+            <h1>About Me</h1>
+          ) : (
+            <h1>Projects</h1>
+          )}
         </>
       )}
     </div>

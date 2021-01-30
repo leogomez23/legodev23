@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 
-const NavBar = () => {
-  const tabHome = "home";
-  const tabAboutMe = "aboutMe";
-  const tabProjects = "projects";
-
-  const [tab, setTab] = useState(tabHome);
-
+const NavBar = ({ tab, setTab, tabs }) => {
   const styleSelect = {
     color: "var(--purple-color)",
   };
@@ -15,25 +9,25 @@ const NavBar = () => {
     <nav>
       <ul>
         <li
-          style={tab === tabHome ? styleSelect : {}}
+          style={tab === tabs.home ? styleSelect : {}}
           onClick={() => {
-            setTab(tabHome);
+            setTab(tabs.home);
           }}
         >
           Home
         </li>
         <li
-          style={tab === tabAboutMe ? styleSelect : {}}
+          style={tab === tabs.about ? styleSelect : {}}
           onClick={() => {
-            setTab(tabAboutMe);
+            setTab(tabs.about);
           }}
         >
           About Me
         </li>
         <li
-          style={tab === tabProjects ? styleSelect : {}}
+          style={tab === tabs.projects ? styleSelect : {}}
           onClick={() => {
-            setTab(tabProjects);
+            setTab(tabs.projects);
           }}
         >
           Projects
