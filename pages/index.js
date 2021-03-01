@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Intro from "../components/Intro/Intro";
 import NavBar from "../components/NavBar/NavBar";
 import Home from "../components/Home/Home";
+import ScrollVertical from "../components/Scroll/ScrollVertical";
 
 import styles from "../styles/Home.module.css";
 
@@ -43,7 +44,10 @@ export default function Index() {
           {tab === tabHome ? (
             <Home />
           ) : tab === tabAboutMe ? (
-            <h1>About Me</h1>
+            <ScrollVertical>
+              <h1>About Me</h1>
+              <h1>About Me 2</h1>
+            </ScrollVertical>
           ) : (
             <h1>Projects</h1>
           )}
