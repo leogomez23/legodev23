@@ -1,21 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const ScrollVertical = ({ children }) => {
+// transform: translate(-50%) scale(0.5);
+
+const ScrollHorizontal = ({ children }) => {
   const [position, setPosition] = useState(0);
 
   const [beforeTimeout, setBeforeTimeout] = useState(0);
-  const [beforeWheelTimeout, setBeforeWheelTimeout] = useState(0);
 
   const [touchMove, setTouchMove] = useState({
     initial: 0,
     end: 0,
   });
 
-  const [wheelMovement, setWheelMovement] = useState(0);
-
   const container = useRef(null);
-
-  useEffect(() => {}, []);
 
   function movementPage(newPosition, newStep) {
     clearTimeout(beforeTimeout);
@@ -25,7 +22,8 @@ const ScrollVertical = ({ children }) => {
     let newMovement;
 
     if (newPosition !== position || newStep) {
-      container.current.firstChild.style.animation = "leave-page 0.3s forwards";
+      container.current.firstChild.style.animation =
+        "in-out-element 0.3s forwards";
     }
 
     let newTimeout = setTimeout(() => {
@@ -45,14 +43,14 @@ const ScrollVertical = ({ children }) => {
 
   function handleMovement(e) {
     let newMovement = touchMove;
-    newMovement.initial = e.pageY || e.changedTouches[0].pageY;
+    newMovement.initial = e.pageX || e.changedTouches[0].pageX;
     setTouchMove(newMovement);
   }
 
   function handleEndMovement(e) {
     let newTouch = touchMove;
 
-    newTouch.end = e.pageY || e.changedTouches[0].pageY;
+    newTouch.end = e.pageX || e.changedTouches[0].pageX;
 
     setTouchMove(newTouch);
 
@@ -65,23 +63,6 @@ const ScrollVertical = ({ children }) => {
     }
   }
 
-  function handleWheel(e) {
-    clearTimeout(beforeWheelTimeout);
-
-    setWheelMovement(wheelMovement + e.deltaY);
-
-    let newTimeout = setTimeout(() => {
-      if (wheelMovement > 0) {
-        movementPage(null, "previous");
-      } else if (wheelMovement < 0) {
-        movementPage(null, "next");
-      }
-      setWheelMovement(0);
-    }, 250);
-
-    setBeforeWheelTimeout(newTimeout);
-  }
-
   return (
     <div
       ref={container}
@@ -89,7 +70,6 @@ const ScrollVertical = ({ children }) => {
       onTouchEnd={handleEndMovement}
       onMouseDown={handleMovement}
       onMouseUp={handleEndMovement}
-      onWheel={handleWheel}
     >
       {children[position]}
 
@@ -112,15 +92,13 @@ const ScrollVertical = ({ children }) => {
           position: absolute;
           display: flex;
           justify-content: center;
-          align-items: center;
-          flex-flow: column;
-          top: 0;
-          right: 0;
-          height: 100%;
+          bottom: 0;
+          width: 100%;
           animation-name: intro;
           animation-duration: 500ms;
         }
         span {
+          display: block;
           width: 10px;
           height: 10px;
           background-color: var(--blue-color);
@@ -136,16 +114,22 @@ const ScrollVertical = ({ children }) => {
 
         @keyframes intro {
           from {
-            right: -20px;
+            bottom: -20px;
+            opacity: 0;
           }
           to {
-            right: 0;
+            bottom: 0;
+            opacity: 1;
           }
         }
-
-        @media screen and (max-width: 500px) {
-          section {
-            display: none;
+      `}</style>
+      <style jsx global>{`
+        @keyframes in-out-element {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
           }
         }
       `}</style>
@@ -153,4 +137,4 @@ const ScrollVertical = ({ children }) => {
   );
 };
 
-export default ScrollVertical;
+export default ScrollHorizontal;
