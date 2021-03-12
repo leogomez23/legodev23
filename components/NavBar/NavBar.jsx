@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const NavBar = ({ tab, setTab, tabs }) => {
   const styleSelect = {
-    color: "var(--purple-color)",
+    color: "var(--blue-color)",
   };
 
   return (
@@ -58,7 +58,7 @@ const NavBar = ({ tab, setTab, tabs }) => {
           overflow: hidden;
         }
         li:hover {
-          color: var(--purple-color);
+          color: var(--blue-color);
         }
         li::after {
           position: absolute;
@@ -66,11 +66,11 @@ const NavBar = ({ tab, setTab, tabs }) => {
           content: "";
           display: block;
           height: 5px;
-          background-color: var(--purple-color);
+          background-color: var(--blue-color);
         }
         li:hover::after {
           animation-name: hover-in;
-          animation-duration: 1s;
+          animation-duration: 700ms;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
         }
