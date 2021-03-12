@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 // transform: translate(-50%) scale(0.5);
 
-const ScrollHorizontal = ({ children }) => {
+const ScrollHorizontal = ({ children, bullets }) => {
   const [position, setPosition] = useState(0);
 
   const [beforeTimeout, setBeforeTimeout] = useState(0);
@@ -73,15 +73,22 @@ const ScrollHorizontal = ({ children }) => {
     >
       {children[position]}
 
-      <section>
-        {children.map((element, index) => (
-          <span
-            style={position === index ? { opacity: 1 } : {}}
-            onClick={() => movementPage(index)}
-            key={index}
-          />
-        ))}
-      </section>
+      {bullets ? (
+        <section>
+          {children.map((element, index) => (
+            <span
+              style={position === index ? { opacity: 1 } : {}}
+              onClick={() => movementPage(index)}
+              key={index}
+            />
+          ))}
+        </section>
+      ) : (
+        <>
+          <span onClick={() => movementPage(null, "previous")}>{"<"}</span>
+          <span onClick={() => movementPage(null, "next")}>{">"}</span>
+        </>
+      )}
 
       <style jsx>{`
         div {
@@ -97,7 +104,7 @@ const ScrollHorizontal = ({ children }) => {
           animation-name: intro;
           animation-duration: 500ms;
         }
-        span {
+        section > span {
           display: block;
           width: 10px;
           height: 10px;
@@ -108,8 +115,35 @@ const ScrollHorizontal = ({ children }) => {
           opacity: 0.5;
           transition: all 300ms;
         }
-        span:hover {
+        section > span:hover {
           opacity: 1;
+        }
+
+        div > span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: calc(50% - 15px);
+          width: 30px;
+          height: 30px;
+          background: rgba(0, 0, 0, 0.3);
+          color: var(--main-color);
+          font-size: 2rem;
+          border-radius: 3px;
+          padding-bottom: 3px;
+          cursor: pointer;
+          transition: all 300ms;
+        }
+        div > span {
+          left: -15px;
+        }
+        div > span:last-child {
+          left: initial;
+          right: -15px;
+        }
+        div > span:hover {
+          background: rgba(0, 0, 0, 1);
         }
 
         @keyframes intro {

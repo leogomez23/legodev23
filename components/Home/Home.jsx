@@ -83,7 +83,7 @@ const Home = () => {
         </ScrollHorizontal>
       </div>
       <div>
-        <ScrollHorizontal>
+        <ScrollHorizontal bullets={true}>
           <Testimonial
             testimony="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt aliquam dolor vitae suscipit."
             img="https://firebasestorage.googleapis.com/v0/b/portafolio-8f8c4.appspot.com/o/avatar.png?alt=media&token=387e8205-fba3-4962-a496-c8fb9923a96b"
