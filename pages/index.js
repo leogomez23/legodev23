@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Intro from "../components/Intro/Intro";
 import NavBar from "../components/NavBar/NavBar";
 import Home from "../components/Home/Home";
-import ScrollVertical from "../components/Scroll/ScrollVertical";
+import AboutMe from "../components/AboutMe/AboutMe";
 
 import styles from "../styles/Home.module.css";
 
@@ -32,6 +32,13 @@ export default function Index() {
         <Intro />
       ) : (
         <>
+          {tab === tabHome ? (
+            <Home />
+          ) : tab === tabAboutMe ? (
+            <AboutMe />
+          ) : (
+            <h1>Projects</h1>
+          )}
           <NavBar
             tab={tab}
             setTab={setTab}
@@ -41,16 +48,6 @@ export default function Index() {
               projects: tabProjects,
             }}
           />
-          {tab === tabHome ? (
-            <Home />
-          ) : tab === tabAboutMe ? (
-            <ScrollVertical>
-              <h1>About Me</h1>
-              <h1>About Me 2</h1>
-            </ScrollVertical>
-          ) : (
-            <h1>Projects</h1>
-          )}
         </>
       )}
     </div>
