@@ -6,6 +6,7 @@ import Home from "../components/Home/Home";
 import AboutMe from "../components/AboutMe/AboutMe";
 
 import styles from "../styles/Home.module.css";
+import Projects from "../components/Projects/Projects";
 
 export default function Index() {
   const tabHome = "home";
@@ -37,7 +38,7 @@ export default function Index() {
           ) : tab === tabAboutMe ? (
             <AboutMe />
           ) : (
-            <h1>Projects</h1>
+            <Projects />
           )}
           <NavBar
             tab={tab}
