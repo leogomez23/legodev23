@@ -1,5 +1,6 @@
 import React from "react";
 import ScrollVertical from "../Scroll/ScrollVertical";
+import SeeMore from "../SeeMore/SeeMore";
 import AboutMeTabs from "./AboutMeTabs";
 
 const AboutMe = () => {
@@ -26,11 +27,17 @@ const AboutMe = () => {
         </p>
         <p>
           Mis principales temas de estudios son ciencias, tecnologías y
-          crecimiento personal. Ver más{" "}
+          crecimiento personal.{" "}
+          <SeeMore content="En ciencias, me gusta ver todo lo que los científicos van descubriendo, pero lo que más me atrae es la física y la astrofísica. En cuanto a la tecnología me pasa algo parecido, me gusta ver las innovaciones tecnológicas que van surgiendo, pero lo que más he investigado va relacionado con el desarrollo de software y tecnologías de computación.">
+            Ver m&aacute;s
+          </SeeMore>
         </p>
         <p>
           Las actividades físicas que más me gustan practicar son deportes y
-          ejercicios. Ver más
+          ejercicios.{" "}
+          <SeeMore content="mis deportes favoritos son béisbol, básquetbol y natación. Los ejercicios que más me gusta son los relacionados con la calistenia.">
+            Ver m&aacute;s
+          </SeeMore>
         </p>
       </AboutMeTabs>
       <AboutMeTabs img="https://firebasestorage.googleapis.com/v0/b/portafolio-8f8c4.appspot.com/o/AboutMe%2Fmaldives-1993704_1920.jpg?alt=media&token=eead2cb1-a307-496a-be8e-727c56e1755c">
