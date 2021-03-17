@@ -77,7 +77,7 @@ const ScrollVertical = ({ children }) => {
         movementPage(null, "next");
       }
       setWheelMovement(0);
-    }, 250);
+    }, 100);
 
     setBeforeWheelTimeout(newTimeout);
   }
