@@ -75,6 +75,18 @@ const ProjectsTabs = ({ title, description, projects }) => {
             transform: translateX(0);
           }
         }
+
+        @media screen and (max-width: 500px) {
+          div {
+            padding: 0 1rem 50px;
+          }
+          article {
+            display: none;
+          }
+          section {
+            width: 100%;
+          }
+        }
       `}</style>
     </div>
   );
