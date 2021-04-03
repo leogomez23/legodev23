@@ -15,12 +15,22 @@ const Home = () => {
           I enjoy <span>working</span> in a team & use agile development
           methodologies.
         </p>
-        {/* <span>
-          <p>
-            Cuando tengo una propuesta de valor para mejorar el producto o
-            servicio en el que esté trabajando intento comunicarlo.{" "}
-          </p>
-        </span> */}
+        <span>
+          <a
+            href="https://github.com/legodev23"
+            className="github"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.instagram.com/legodev23/"
+            className="instagram"
+            target="_blank"
+          >
+            Instagram
+          </a>
+        </span>
       </div>
       <div>
         <ScrollHorizontal>
@@ -154,6 +164,52 @@ const Home = () => {
           opacity: 0;
         }
 
+        div > span {
+          display: flex;
+        }
+        div > span > a {
+          display: block;
+          padding: 0.5rem 1rem;
+          margin: 0 0.5rem;
+          color: var(--main-color);
+          border-radius: 5px;
+          transition: all 300ms;
+        }
+        .github {
+          background-color: #888;
+        }
+        .github:hover {
+          background-color: #051d4d;
+        }
+        .instagram {
+          position: relative;
+          overflow: hidden;
+          background-color: #888f;
+        }
+        .instagram:hover {
+          background-color: #8880;
+        }
+        .instagram::before,
+        .instagram::after {
+          content: "";
+          position: absolute;
+          display: block;
+          z-index: -1;
+        }
+        .instagram::before {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(345deg, #ff00b7, #7428cb);
+        }
+        .instagram::after {
+          top: 0px;
+          left: -54px;
+          width: 150px;
+          height: 100px;
+          background: radial-gradient(#ffb800, #ff6300, rgba(255, 0, 0, 0) 79%);
+        }
         @keyframes left-in {
           from {
             opacity: 0;
@@ -181,10 +237,10 @@ const Home = () => {
             grid-template-columns: 1fr 1fr;
           }
           div:last-child {
-            display: none;
+            grid-row-end: span 2;
           }
           div:nth-child(2n) {
-            grid-row-end: span 2;
+            display: none;
           }
         }
 
@@ -198,11 +254,7 @@ const Home = () => {
             text-align: center;
           }
 
-          div:nth-child(2n) {
-            display: none;
-          }
-
-          div > span {
+          div:last-child {
             display: none;
           }
         }
